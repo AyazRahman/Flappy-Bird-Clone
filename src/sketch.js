@@ -1,5 +1,6 @@
 var bird;
 var pipes = [];
+counter = 0;
 
 function setup() {
   scoreElem = createDiv();
@@ -9,16 +10,16 @@ function setup() {
 
   createCanvas(400, 600);
   resetSketch();
-  pipes.push(new Pipe());
 }
 
 function draw() {
+  counter++;
   background(0);
   bird.update();
   bird.show();
   hit();
 
-  if (frameCount % 100 == 0) {
+  if (counter % 100 == 0) {
     pipes.push(new Pipe());
   }
 
@@ -71,6 +72,8 @@ function resetSketch() {
    */
   bird = new Bird();
   pipes = [];
+  pipes.push(new Pipe());
   scoreElem.html("Score : " + this.bird.score);
   scoreElem.style("color", "white");
+  counter = 0;
 }
